@@ -7,7 +7,7 @@ int main(int argc,char *argv[])
 {
 	const int DISPLAY_WIDTH = 800;
 	const int DISPLAY_HEIGHT = 800;
-	const float CAMERA_ANGLE = 0.0f;
+	const float CAMERA_ANGLE = 45.0f;
 	const float NEAR = 1.0f;
 	const float FAR = 100.0f;
 
@@ -18,6 +18,10 @@ int main(int argc,char *argv[])
 	Init(display);
 	
 	scn->Init();
+
+	
+
+
 
 	display.SetScene(scn);
 

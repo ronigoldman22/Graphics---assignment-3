@@ -72,7 +72,7 @@ private:
 	int cameraIndx;
 	void Clear(float r, float g, float b, float a);
 
-protected:
+public:
 	std::vector<Shape*> shapes;
 	std::vector<Shader*> shaders;
 	std::vector<int> chainParents;
