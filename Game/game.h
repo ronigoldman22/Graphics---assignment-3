@@ -14,5 +14,7 @@ public:
 	void WhenTranslate();
 	void Motion();
 	~Game(void);
+private: //added:
+
 };
 

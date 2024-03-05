@@ -40,13 +40,18 @@
 				break;
 
 				case GLFW_KEY_UP:
-					scn->MoveCamera(0,scn->zTranslate,0.4f);
+					scn->MoveCamera(0,scn->yTranslate,-0.4f);
 					break;
 				case GLFW_KEY_DOWN:
-					//scn->shapeTransformation(scn->xGlobalRotate,-5.f);
-					//cout<< "down: "<<endl;
-					scn->MoveCamera(0,scn->zTranslate,-0.4f);
+					scn->MoveCamera(0,scn->yTranslate,0.4f);
 					break;
+				case GLFW_KEY_LEFT: //added
+					scn->MoveCamera(0, scn->xTranslate, 0.4f);
+					break;
+				case GLFW_KEY_RIGHT: //added
+					scn->MoveCamera(0, scn->xTranslate, -0.4f);
+					break;
+					
 
 			default:
 				break;
