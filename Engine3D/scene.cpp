@@ -1,3 +1,4 @@
+//scene!
 #include "scene.h"
 #include "glad/include/glad/glad.h"
 #include <iostream>
@@ -193,16 +194,16 @@
 		{
 			if(button == 1 )
 			{				
-
-				MyTranslate(glm::vec3(-xrel/20.0f,0,0),0);
-				MyTranslate(glm::vec3(0,yrel/20.0f,0),0);
-				WhenTranslate();
+				MoveCamera(0, xTranslate, -xrel / 20.0f);
+				MoveCamera(0, yTranslate, yrel / 20.0f);
+			//	WhenTranslate();
 			}
 			else
 			{
-				MyRotate(xrel/2.0f,glm::vec3(1,0,0),0);
-				MyRotate(yrel/2.0f,glm::vec3(0,0,1),0);
-				WhenRotate();
+				glm::mat3 rotTranspose = glm::transpose(glm::mat3(rot));
+				MyRotate(xrel/2.0f, rotTranspose * glm::vec3(0,-1,0),0);
+				MyRotate(yrel/2.0f, rotTranspose * glm::vec3(-1,0,1),0);
+			//	WhenRotate();
 			}
 		}
 	}

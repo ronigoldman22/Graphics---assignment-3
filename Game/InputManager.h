@@ -1,4 +1,7 @@
+//input manager!
 #pragma once   //maybe should be static class
+#include <iostream>
+#include <fstream>
 #include "display.h"
 #include "game.h"
 
@@ -11,13 +14,14 @@
 			double x2,y2;
 			glfwGetCursorPos(window,&x2,&y2);
 			scn->Picking((int)x2,(int)y2);
+
 		}
 	}
 	
 	void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 	{
 		Game *scn = (Game*)glfwGetWindowUserPointer(window);
-		scn->MyTranslate(glm::vec3(0,0,xoffset),0);
+		scn->MoveCamera(0, scn->zTranslate, yoffset);
 		
 	}
 	
@@ -32,12 +36,12 @@
 				case GLFW_KEY_ESCAPE:			
 					glfwSetWindowShouldClose(window,GLFW_TRUE);
 				break;
-				case GLFW_KEY_SPACE:
+				/*case GLFW_KEY_SPACE:
 					if(scn->IsActive())
 						scn->Deactivate();
 					else
 						scn->Activate();
-				break;
+				break;*/
 
 				case GLFW_KEY_UP:
 					scn->MoveCamera(0,scn->yTranslate,-0.4f);
@@ -50,6 +54,51 @@
 					break;
 				case GLFW_KEY_RIGHT: //added
 					scn->MoveCamera(0, scn->xTranslate, -0.4f);
+					break;
+				case GLFW_KEY_R: //added
+					if (!scn->lockRight)
+						scn->rotateRightWall();
+					else
+						std::cout << "R pressed - invalid action" << std::endl;
+					break;
+				case GLFW_KEY_L: //added
+					if (!scn->lockLeft)
+						scn->rotateLeftWall();
+					else
+						std::cout << "L pressed - invalid action" << std::endl;
+					break;
+				case GLFW_KEY_U: //added
+					if (!scn->lockUp)
+						scn->rotateUpWall();
+					else
+						std::cout << "U pressed - invalid action" << std::endl;
+					break;
+				case GLFW_KEY_D: //added
+					if (!scn->lockDown)
+						scn->rotateDownWall();
+					else
+						std::cout << "D pressed - invalid action" << std::endl;
+					break;
+				case GLFW_KEY_B: //added
+					if (!scn->lockBack)
+						scn->rotateBackWall();
+					else
+						std::cout << "B pressed - invalid action" << std::endl;
+					break;
+				case GLFW_KEY_F: //added
+					if (!scn->lockFront)
+						scn->rotateFrontWall();
+					else
+						std::cout << "F pressed - invalid action" << std::endl;
+					break;
+				case GLFW_KEY_SPACE: //added
+					scn->spacePressed();
+					break;
+				case GLFW_KEY_Z: //added
+					scn->ZPressed();
+					break;
+				case GLFW_KEY_A: //added
+					scn->APressed();
 					break;
 					
 
