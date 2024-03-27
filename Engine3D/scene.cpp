@@ -183,8 +183,6 @@
 
 	float Scene::Picking(int x,int y)
 	{
-		
-		
 		return 0;
 	}
 	//return coordinates in global system for a tip of arm position is local system 
@@ -194,16 +192,16 @@
 		{
 			if(button == 1 )
 			{				
-				MoveCamera(0, xTranslate, -xrel / 20.0f);
-				MoveCamera(0, yTranslate, yrel / 20.0f);
-			//	WhenTranslate();
+				MoveCamera(0, xTranslate, xrel / 20.0f);
+				MoveCamera(0, yTranslate, -yrel / 20.0f);
+				WhenTranslate();
 			}
 			else
 			{
 				glm::mat3 rotTranspose = glm::transpose(glm::mat3(rot));
 				MyRotate(xrel/2.0f, rotTranspose * glm::vec3(0,-1,0),0);
-				MyRotate(yrel/2.0f, rotTranspose * glm::vec3(-1,0,1),0);
-			//	WhenRotate();
+				MyRotate(yrel/2.0f, rotTranspose * glm::vec3(-1,0,0),0);
+				WhenRotate();
 			}
 		}
 	}

@@ -30,8 +30,6 @@ glm::mat4 MovableGLM::MakeTrans() const
 	return rot * trans * scl;
 }
 
-
-
 void MovableGLM::MyTranslate(glm::vec3 delta,int mode)
 {
 	trans = glm::translate(trans,delta);
